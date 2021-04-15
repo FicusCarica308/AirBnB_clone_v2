@@ -21,7 +21,7 @@ def do_pack():
               .format(time_name))
     except:
         return None
-    return "versions/web_static_{}.tgz web_static".format(time_name)
+    return "versions/web_static_{}.tgz".format(time_name)
 
 
 def do_deploy(archive_path):
@@ -35,6 +35,7 @@ def do_deploy(archive_path):
     """
     # returns false if path does not work
     if os.path.exists(archive_path) is False:
+        print("jere")
         return False
     # creation of directory path we will unpack our archive into
     archive = archive_path.split('/')[1]
