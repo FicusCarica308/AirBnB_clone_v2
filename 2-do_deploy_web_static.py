@@ -29,7 +29,7 @@ def do_deploy(archive_path):
     Description:
     distributes an archive to your web servers
     Returns: returns false if a command fails / path is non existent
-    
+
     Extra: used try / except instead of result.success
     since there would be to many checks / assignemtns
     """
@@ -58,3 +58,4 @@ def do_deploy(archive_path):
         run("ln -s {} /data/web_static/current".format(unpack_dir))
     except:
         return False
+    return True
