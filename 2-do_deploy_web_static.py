@@ -22,7 +22,7 @@ def do_pack():
     return "versions/web_static_{}.tgz web_static".format(time_name)
 
 def do_deploy(archive_path):
-    """ """
+    """TEMP DOC"""
     # returns false if file path does not exist
     if os.path.exists(archive_path) is False:
         return False
