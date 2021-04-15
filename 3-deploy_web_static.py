@@ -2,7 +2,7 @@
 """ 2-do_deploy_web_static.py """
 from datetime import datetime
 import os
-from fabric.api import run, env, put
+from fabric.api import run, env, put, local
 
 
 env.hosts = ["35.185.53.142", "34.73.117.146"]
