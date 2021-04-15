@@ -60,9 +60,10 @@ def do_deploy(archive_path):
         return False
     return True
 
+
 def deploy():
     """ creates and distributes an archive to your web servers """
     path = do_pack()
-    if path == False:
+    if path is False:
         return False
     return do_deploy(path)
