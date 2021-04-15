@@ -5,7 +5,6 @@ import os
 from fabric.api import run, env, put
 
 env.hosts = ["35.185.53.142", "34.73.117.146"]
-env.password = 'steel_iron_strong'
 
 def do_pack():
     """
