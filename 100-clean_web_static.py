@@ -91,8 +91,7 @@ def do_clean(number=0):
         number = 1
 
     if local_check == 0:
-        with lcd('versions'):
-            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
+        local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
         local_check += 1
     with cd('/data/web_static/releases'):
         run("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
