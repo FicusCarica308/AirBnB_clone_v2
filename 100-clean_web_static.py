@@ -95,5 +95,5 @@ def do_clean(number=0):
             local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
         local_check += 1
     with cd('/data/web_static/releases'):
-        run("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
+        run("ls -1tr | grep .tgz | head -n {} | xargs rmdir -f".format(number))
     # ls -1tr | head -n 1 | xargs rm
