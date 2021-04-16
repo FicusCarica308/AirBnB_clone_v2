@@ -87,7 +87,8 @@ def do_clean(number=0):
      and second most recent versions of your archive.
     """
     global local_check
-    if number == 0:  # if number is zero make it one
+
+    if int(number) == 0:  # if number is zero make it one
         number = 1
 
     if local_check == 0:
