@@ -97,7 +97,7 @@ def do_clean(number=0):
             number_delete = int(output) - int(number)
             local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number_delete))
         local_check += 1
-        # deleting the wrong amount (when number is 1 deletes one instead of the rest)
-    # with cd('/data/web_static/releases'):
-        # run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(number))
-    # ls -1tr | head -n 1 | xargs rm
+    with cd('/data/web_static/releases'):
+        output = run("ls -1tr | grep -c .tgz")
+        number_delete = int(output.stdout) - int(number)
+        run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(number_delete))
