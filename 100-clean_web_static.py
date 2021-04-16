@@ -2,7 +2,7 @@
 """ 3-deploy_web_static.py """
 from datetime import datetime
 import os
-from fabric.api import run, env, put, local, lcd
+from fabric.api import run, env, put, local, lcd, cd
 
 
 env.hosts = ["35.185.53.142", "34.73.117.146"]
@@ -91,7 +91,8 @@ def do_clean(number=0):
         number = 1
 
     if local_check == 0:
-        local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
+        with lcd('versions'):
+            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
         local_check += 1
     with cd('/data/web_static/releases'):
         run("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
