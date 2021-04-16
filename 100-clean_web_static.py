@@ -8,6 +8,7 @@ from fabric.api import run, env, put, local, lcd, cd
 env.hosts = ["35.185.53.142", "34.73.117.146"]
 local_check = 0
 
+
 def do_pack():
     """
     Description:
@@ -95,9 +96,11 @@ def do_clean(number=0):
         with lcd('versions'):
             output = local("ls -1tr | grep -c .tgz", capture=True)
             number_delete = int(output) - int(number)
-            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number_delete))
+            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(
+                number_delete))
         local_check += 1
     with cd('/data/web_static/releases'):
         output = run("ls -1tr | grep -c .tgz")
         number_delete = int(output.stdout) - int(number)
-        run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(number_delete))
+        run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(
+            number_delete))
