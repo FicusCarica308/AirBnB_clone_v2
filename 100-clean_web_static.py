@@ -89,7 +89,7 @@ def do_clean(number=0):
     if number == 0:  # if number is zero make it one
         number = 1
 
-    local('ls -1tr | head -n {} | xargs rm -f'.format(number))
-    run('ls -1tr /data/web_static/releases |head -n {} | xargs rm -f'.
+    local('ls -1tr | grep .tgz | head -n {} | xargs rm -f'.format(number))
+    run('ls -1tr /data/web_static/releases | grep .tgz | head -n {} | xargs rm -f'.
         format(number))
     # ls -1tr | head -n 1 | xargs rm
