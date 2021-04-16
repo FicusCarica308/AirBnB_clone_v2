@@ -6,7 +6,6 @@ from fabric.api import run, env, put, local, lcd
 
 
 env.hosts = ["35.185.53.142", "34.73.117.146"]
-local_check = 0
 
 def do_pack():
     """
@@ -86,14 +85,12 @@ def do_clean(number=0):
     of your archive. If number is 2, keep the most recent,
      and second most recent versions of your archive.
     """
-    global local_check
     if number == 0:  # if number is zero make it one
         number = 1
 
-    if local_check == 0:
-        with lcd('versions'):
-            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
-        local_check += 1
+    with lcd('versions'):
+        local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
+
     # run("ls -1tr /data/web_static/releases | grep .tgz | head -n {} | xargs rm".format(number))
     # with cd('/data/web_static/releases'):
         # run('ls -1tr | grep .tgz | head -n {}')
