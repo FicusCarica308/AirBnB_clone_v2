@@ -93,8 +93,11 @@ def do_clean(number=0):
 
     if local_check == 0:
         with lcd('versions'):
-            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number))
+            output = local("ls -1tr | grep -c .tgz", capture=True)
+            number_delete = int(output) - int(number)
+            local("ls -1tr | grep .tgz | head -n {} | xargs rm -f".format(number_delete))
         local_check += 1
-    with cd('/data/web_static/releases'):
-        run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(number))
+        # deleting the wrong amount (when number is 1 deletes one instead of the rest)
+    # with cd('/data/web_static/releases'):
+        # run("ls -1tr | grep .tgz | head -n {} | xargs rm -rf".format(number))
     # ls -1tr | head -n 1 | xargs rm
