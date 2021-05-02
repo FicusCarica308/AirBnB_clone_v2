@@ -80,7 +80,7 @@ def odd_or_even(n):
         result = 'even'
     else:
         result = 'odd'
-    return render_template('6-number_odd_or_even.html', result=result)
+    return render_template('6-number_odd_or_even.html', num=n, result=result)
 
 if __name__ == "__main__":
     flask_app.run(host="0.0.0.0", port=5000)  # sets host and port when main
