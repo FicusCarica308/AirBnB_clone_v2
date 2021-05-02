@@ -50,8 +50,10 @@ class BaseModel:
         """Convert instance into dict format"""
         final_dict = dict(self.__dict__)
         # created_at and updated_at are converted to str() iso format
-        final_dict["created_at"] = self.created_at.isoformat()
-        final_dict["updated_at"] = self.updated_at.isoformat()
+        if "created_at" in final_dict:
+            final_dict["created_at"] = self.created_at.isoformat()
+        if "updated_at" in final_dict:
+            final_dict["updated_at"] = self.updated_at.isoformat()
         final_dict["__class__"] = self.__class__.__name__
         if '_sa_instance_state' in final_dict:
             del final_dict['_sa_instance_state']
