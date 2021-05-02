@@ -34,6 +34,10 @@ class BaseModel:
                     setattr(self, key, value)
             if 'id' not in kwargs or self.id is None:
                 self.id = str(uuid.uuid4())
+            if 'created_at' not in kwargs or self.created_at is None:
+                self.created_at = datetime.now()
+            if 'updated_at' not in kwargs or self.updated_at is None:
+                self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -50,10 +54,8 @@ class BaseModel:
         """Convert instance into dict format"""
         final_dict = dict(self.__dict__)
         # created_at and updated_at are converted to str() iso format
-        if "created_at" in final_dict:
-            final_dict["created_at"] = self.created_at.isoformat()
-        if "updated_at" in final_dict:
-            final_dict["updated_at"] = self.updated_at.isoformat()
+        final_dict["created_at"] = self.created_at.isoformat()
+        final_dict["updated_at"] = self.updated_at.isoformat()
         final_dict["__class__"] = self.__class__.__name__
         if '_sa_instance_state' in final_dict:
             del final_dict['_sa_instance_state']
