@@ -19,6 +19,6 @@ class State(BaseModel, Base):
         city_list = []
         city_obj = models.storage.all(City)  # gets city objs from storage
         for key, value in city_obj.items():
-            if value.state_id == self.id:  # finds citys from current state
+            if value.to_dict()['state_id'] == self.id:  # finds citys from current state
                 city_list.append(value)
         return city_list  # returns citys in state
