@@ -48,7 +48,7 @@ def print_text(text):
 
 
 @flask_app.route('/python')  # so passing no arguments to dir doesnt throw 404
-@flask_app.route('/python/<text>')
+@flask_app.route('/python/<text>', strict_slashes=False)
 def print_text_default(text='is cool'):
     """ prints out given text using flask variable rules """
     return 'Python %s' % text.replace("_", " ")
