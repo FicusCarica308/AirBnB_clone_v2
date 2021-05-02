@@ -66,4 +66,4 @@ class FileStorage:
         """
         calls reload when called to deserializing the JSON file to objects
         """
-        self.__objects.reload()
+        self.reload()
