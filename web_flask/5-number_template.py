@@ -65,7 +65,7 @@ def print_if_num(n):
     return '%i is a number' % n
 
 
-@flask_app.route('/number_template/<n>')
+@flask_app.route('/number_template/<n>', strict_slashes=False)
 def render_html_int(n):
     """ renders html template only if n is a number """
     return render_template('5-number.html', num=n)
