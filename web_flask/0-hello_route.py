@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Description:
     In this module we start a flask application called flask_app.
