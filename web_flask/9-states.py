@@ -27,7 +27,7 @@ def display_state(id):
     exist = 0  # Not found by default
     state_hold = None
     change_cities = None
-    
+
     for state in states.values():
         if state.id == id:
             exist = 1  # 1 for found
@@ -39,8 +39,9 @@ def display_state(id):
         for key, city in cities.items():
             if city.state_id != id:
                 change_cities.pop(key)
-    
-    return render_template('9-states.html', state_hold=state_hold, check=1, exist=exist, cities=change_cities)
+
+    return render_template('9-states.html', state_hold=state_hold, check=1,
+                           exist=exist, cities=change_cities)
 
 
 @flask_app.teardown_appcontext
